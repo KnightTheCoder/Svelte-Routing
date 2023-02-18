@@ -17,10 +17,14 @@
     const setView = () => {
         $currentRoute = view
     }
+
+    const toTitle = text => {
+        return text.charAt(0).toUpperCase() + text.slice(1)
+    }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<span class="mx-2" on:click={setView}>{view.name}</span>
+<span class="mx-2" on:click={setView}>{toTitle(view.name)}</span>
 
 <style>
     span {

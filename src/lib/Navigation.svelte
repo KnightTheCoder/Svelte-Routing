@@ -1,15 +1,13 @@
 <script>
     import RouterLink from "./routing/RouterLink.svelte";
-    import Counter from "./Counter.svelte";
-    import Stopper from "./Stopper.svelte";
-    import { routes } from "./routing";
+    import CounterView from "../views/CounterView.svelte";
+    import StopperView from "../views/StopperView.svelte";
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
 <nav class="text-center">
     <RouterLink view={{name: 'home', component: null}} />
-    <RouterLink view={{name: 'counter', component: Counter}} />
-    <RouterLink view={{name: 'stopper', component: Stopper}} />
+    <RouterLink view={{name: 'counter', component: CounterView}} />
+    <RouterLink view={{name: 'stopper', component: StopperView}} />
 </nav>
 
 <style>
