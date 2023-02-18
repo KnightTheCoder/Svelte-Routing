@@ -1,4 +1,4 @@
-import { routes } from "../lib/routing";
+import { routes } from "../stores/routing";
 import CounterView from "../views/CounterView.svelte";
 import StopperView from "../views/StopperView.svelte";
 

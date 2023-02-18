@@ -1,5 +1,5 @@
 <script>
-    import { currentRoute } from ".";
+    import { currentRoute } from "../stores/routing";
 </script>
 
 

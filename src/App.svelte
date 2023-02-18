@@ -1,6 +1,6 @@
 <script>
-    import { currentRoute } from './lib/routing';
-    import RouterView from './lib/routing/RouterView.svelte';
+    import { currentRoute } from './stores/routing';
+    import RouterView from './lib/RouterView.svelte';
     import Navigation from './lib/Navigation.svelte';
 </script>
 
