@@ -1,9 +1,16 @@
 <script>
+    /* Provides a navigation link for a given route */
     import { currentRoute, routes } from '.'
 
     export let view = { name: '', component: null }
     routes.update(existing => {
-        existing.push(view);
+        // Only add new route if it doesn't already exist
+        if (existing.every(it => 
+            it.name != view.name && it.component != view.component
+        )) {
+            existing.push(view);
+        }
+
         return existing;
     });
 
