@@ -1,0 +1,19 @@
+<script>
+    import { currentRoute } from './lib/routing';
+    import RouterView from './lib/routing/RouterView.svelte';
+    import Navigation from './lib/Navigation.svelte';
+</script>
+
+<main>
+    <header>
+        <Navigation />
+    </header>
+
+    <div class="container">
+        {#if !$currentRoute?.component}
+            <h1 class="text-center">Choose a page</h1>
+        {/if}
+    </div>
+
+    <RouterView />
+</main>
