@@ -1,5 +1,5 @@
 <script>
-    import RouterLink from "./RouterLink.svelte";
+    import RouterLink from './RouterLink.svelte';
 </script>
 
 <nav class="text-center">

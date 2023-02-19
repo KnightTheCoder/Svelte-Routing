@@ -3,12 +3,42 @@
 
     let displayedCalculation = '';
     let buttons = [
-        ['(', ')', '+/-', 'AC'],
+        ['(', ')', '+/-', 'C'],
         ['7', '8', '9', '/'],
         ['4', '5', '6', '*'],
         ['1', '2', '3', '-'],
         ['0', '.', '=', '+']
     ];
+
+    const handleUserInput = () => {
+        let character = displayedCalculation.charAt(
+            displayedCalculation.length - 1
+        );
+
+        if (['=', 'C'].includes(character) || buttons.every((arr) => arr.every((it) => character != it))) {
+            displayedCalculation = displayedCalculation.slice(
+                0,
+                displayedCalculation.length - 1
+            );
+        }
+
+        switch(character) {
+            case '=':
+                calculate();
+                break;
+
+            case '+/-':
+                togglePolarity();
+                break;
+
+            case 'C':
+                clear();
+                break;
+
+            default:
+                break;
+        }
+    };
 
     const click = (event) => {
         displayedCalculation += event.detail.value;
@@ -28,15 +58,16 @@
         } else {
             displayedCalculation = '-' + displayedCalculation;
         }
-    }
+    };
 </script>
 
 <table class="table bg-secondary text-white w-25 mx-auto">
     <tr>
         <td colspan="4">
             <input
-                class="form-control bg-dark text-white"
+                class="form-control bg-dark text-white text-end"
                 bind:value={displayedCalculation}
+                on:input={handleUserInput}
                 type="text"
             />
         </td>

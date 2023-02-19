@@ -1,6 +1,5 @@
 <script>
-    import { createEventDispatcher } from "svelte";
-
+    import { createEventDispatcher } from 'svelte';
 
     export let value = '';
 
@@ -19,18 +18,19 @@
             case 'AC':
                 dispatch('clear');
                 break;
-        
+
             default:
                 dispatch('click', {
                     value: value
                 });
                 break;
         }
-    }
+    };
 </script>
 
 <button
     class="btn btn-secondary w-25"
-    on:click={click}>
+    on:click={click}
+>
     {value}
 </button>

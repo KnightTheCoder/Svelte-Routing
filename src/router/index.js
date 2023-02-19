@@ -1,9 +1,9 @@
-import { currentRoute, routes } from "../stores/routing";
-import { get } from "svelte/store";
+import { currentRoute, getRouteFromPath, routes } from "../stores/routing";
 import HomeView from "../views/HomeView.svelte";
 import CounterView from "../views/CounterView.svelte";
 import StopperView from "../views/StopperView.svelte";
 import CalculatorView from "../views/CalculatorView.svelte";
+import PageNotFoundView from "../views/PageNotFoundView.svelte";
 
 export const createRouter = () => {
     routes.set([
@@ -26,7 +26,27 @@ export const createRouter = () => {
             path: '/calculator',
             name: 'calculator',
             component: CalculatorView
+        },
+        {
+            path: '/error',
+            name: 'error',
+            component: PageNotFoundView
         }
     ]);
-    currentRoute.set(get(routes)[0]);
+
+    let route = getRouteFromPath(window.location.hash.replace(/^\#/, '/'));
+    if (route) {
+        currentRoute.set(
+            getRouteFromPath(route.path)
+        );
+    } else if (window.location.hash == '') {
+        currentRoute.set(
+            getRouteFromPath('/')
+        );
+    } else {
+        currentRoute.set(
+            getRouteFromPath('/error')
+        );
+    }
+    
 }

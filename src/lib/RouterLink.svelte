@@ -1,13 +1,13 @@
 <script>
     /* Provides a navigation link for a given route */
-    import { currentRoute, getRouteFromPath } from '../stores/routing'
+    import { currentRoute, getRouteFromPath } from '../stores/routing';
 
-    export let to = '/'
+    export let to = '/';
 
     const setPath = () => {
         $currentRoute = getRouteFromPath(to);
-    }
-
+        window.location.hash = to.replace(/^\//, '');
+    };
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -15,7 +15,7 @@
     class="mx-2"
     on:click={setPath}
 >
-    <slot></slot>
+    <slot />
 </span>
 
 <style>
