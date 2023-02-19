@@ -73,9 +73,9 @@
         </td>
     </tr>
 
-    {#each buttons as btn}
+    {#each buttons as btn (btn)}
         <tr>
-            {#each btn as value}
+            {#each btn as value (value)}
                 <CalculatorButton
                     {value}
                     on:click={click}
