@@ -49,7 +49,7 @@
     };
 
     const calculate = () => {
-        displayedCalculation = eval(displayedCalculation);
+        displayedCalculation = eval(displayedCalculation).toString();
     };
 
     const togglePolarity = () => {
