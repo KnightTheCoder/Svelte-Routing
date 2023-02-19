@@ -2,8 +2,7 @@
 
 Custom router for Svelte
 includes:
-- index.js: contains routes and currentRoute
+- stores/routing.js: Stores all routes and the current route
+- router.index.js: Configures all routes
 - RouterLink.svelte: Allows for changing route
 - RouterView.svelte: Displays the current route
-- stores/routing.js: stores all routes and the current route
-- router.index.js: configures all routes
