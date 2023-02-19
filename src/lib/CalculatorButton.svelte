@@ -15,7 +15,7 @@
                 dispatch('togglePolarity');
                 break;
 
-            case 'AC':
+            case 'C':
                 dispatch('clear');
                 break;
 

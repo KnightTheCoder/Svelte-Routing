@@ -9,7 +9,7 @@
         <Navigation />
     </header>
 
-    <div class="container">
+    <div class="container my-4">
         {#if !$currentRoute?.component}
             <h1 class="text-center">Choose a page</h1>
         {:else}
