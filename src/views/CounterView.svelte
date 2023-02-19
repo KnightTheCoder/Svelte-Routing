@@ -25,7 +25,7 @@
     <h3>{oddOrEven}</h3>
 </div>
 
-<div class="w-50 mx-auto">
+<div class="w-25 mx-auto">
     <button class="col-12 my-2 btn btn-success" on:click={increment}>+</button>
     <button class="col-12 my-2 btn btn-danger" on:click={decrement}>-</button>
     <button class="col-12 my-2 btn btn-info" on:click={reset}>Reset</button>

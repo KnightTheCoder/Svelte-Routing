@@ -12,8 +12,8 @@
     <div class="container">
         {#if !$currentRoute?.component}
             <h1 class="text-center">Choose a page</h1>
+        {:else}
+            <RouterView />
         {/if}
     </div>
-
-    <RouterView />
 </main>

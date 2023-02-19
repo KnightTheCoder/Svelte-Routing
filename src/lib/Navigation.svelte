@@ -6,6 +6,7 @@
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/counter">Counter</RouterLink>
     <RouterLink to="/stopper">Stopper</RouterLink>
+    <RouterLink to="/calculator">Calculator</RouterLink>
 </nav>
 
 <style>

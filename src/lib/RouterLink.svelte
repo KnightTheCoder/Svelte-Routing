@@ -11,7 +11,10 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<span class="mx-2" on:click={setPath}>
+<span
+    class="mx-2"
+    on:click={setPath}
+>
     <slot></slot>
 </span>
 
