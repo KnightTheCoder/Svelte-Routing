@@ -1,5 +1,4 @@
 <script>
-    import { currentRoute } from './stores/routing';
     import RouterView from './lib/RouterView.svelte';
     import Navigation from './lib/Navigation.svelte';
 </script>
@@ -10,10 +9,6 @@
     </header>
 
     <div class="container my-4">
-        {#if !$currentRoute?.component}
-            <h1 class="text-center">Choose a page</h1>
-        {:else}
-            <RouterView />
-        {/if}
+        <RouterView />
     </div>
 </main>

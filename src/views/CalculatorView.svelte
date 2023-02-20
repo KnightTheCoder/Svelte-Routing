@@ -61,7 +61,7 @@
     };
 </script>
 
-<table class="table bg-secondary text-white w-25 mx-auto">
+<table class="w-25 mx-auto">
     <tr>
         <td colspan="4">
             <input
@@ -76,13 +76,15 @@
     {#each buttons as btn (btn)}
         <tr>
             {#each btn as value (value)}
-                <CalculatorButton
-                    {value}
-                    on:click={click}
-                    on:clear={clear}
-                    on:calculate={calculate}
-                    on:togglePolarity={togglePolarity}
-                />
+                <td class="w-25">
+                    <CalculatorButton
+                        {value}
+                        on:click={click}
+                        on:clear={clear}
+                        on:calculate={calculate}
+                        on:togglePolarity={togglePolarity}
+                    />
+                </td>
             {/each}
         </tr>
     {/each}

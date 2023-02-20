@@ -29,7 +29,7 @@
 </script>
 
 <button
-    class="btn btn-secondary w-25"
+    class="btn btn-secondary w-100"
     on:click={click}
 >
     {value}

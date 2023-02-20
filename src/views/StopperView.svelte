@@ -7,7 +7,7 @@
     const startCounter = () => {
         if (counterInterval) return;
 
-        counterInterval = setInterval((_) => {
+        counterInterval = setInterval(() => {
             ms++;
             if (ms % 100 == 0 && ms > 0) {
                 ms = 0;
