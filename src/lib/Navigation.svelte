@@ -7,6 +7,7 @@
     <RouterLink to="/counter">Counter</RouterLink>
     <RouterLink to="/stopper">Stopper</RouterLink>
     <RouterLink to="/calculator">Calculator</RouterLink>
+    <RouterLink to="/mine-start">MineSweeper</RouterLink>
 </nav>
 
 <style>

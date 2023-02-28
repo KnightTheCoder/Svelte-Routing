@@ -61,6 +61,10 @@
     };
 </script>
 
+<h1 class="text-center">
+    Calculator
+</h1>
+
 <table class="w-25 mx-auto">
     <tr>
         <td colspan="4">
