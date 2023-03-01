@@ -33,7 +33,7 @@
     Mine Sweeper
 </h1>
 
-<table class="table table-dark">
+<table class="table">
     <tbody>
         {#each field as row}
             <tr>
@@ -55,8 +55,12 @@
         border: 1px solid #505050;
     }
 
-    td, img {
-        width: 30px;
-        height: 30px;
+    img {
+        width: 40px;
+    }
+
+    td {
+        width: 40px;
+        height: 40px;
     }
 </style>
