@@ -66,7 +66,7 @@
     }
 
     const revealCell = (cell, row, col) => {
-        if (isGameOver)
+        if (isGameOver || isGameWon || cell.marked)
             return;
 
         cell.visible = true;
@@ -90,6 +90,7 @@
 
         if (cell.text == 'x') {
             cell.exploded = true;
+            console.log(cell.exploded)
             isGameOver = true;
 
             for (let i of range(0, $fieldSize)) {
@@ -109,6 +110,9 @@
     }
 
     const markCell = (cell) => {
+        if (isGameOver || isGameWon)
+            return;
+
         cell.marked = !cell.marked;        
         field = field;
     }
@@ -124,6 +128,7 @@
         <h3 class="text-center">
             Game over!
         </h3>
+        
         <button class="btn btn-success d-block w-25 mx-auto" on:click={generateField}>
             Play gain
         </button>
@@ -143,8 +148,8 @@
                     <td
                         class="text-center"
                         class:visible={col.visible}
-                        class:exploded={col.exploded}
                         class:bg-danger={col.text == 'x' && col.visible}
+                        class:exploded={col.exploded}
                         class:bg-warning={col.marked}
                         on:click={_ => revealCell(col, rowId, colId)}
                         on:contextmenu|preventDefault={_ => markCell(col)}
@@ -184,6 +189,6 @@
     }
 
     .exploded {
-        background-color: darkred;
+        background-color: darkred !important;
     }
 </style>
