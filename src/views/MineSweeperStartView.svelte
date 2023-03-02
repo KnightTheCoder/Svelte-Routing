@@ -13,12 +13,12 @@
     Choose a size for the field
 </p>
 
-<select class="form-select w-25 mx-auto" bind:value={$fieldSize}>
+<select class="form-select bg-dark text-white w-25 mx-auto" bind:value={$fieldSize}>
     {#each sizes as size}
         <option value={size}>{size}</option>
     {/each}
 </select>
 
-<RouterLink to="/mine-game">
-    <span class="btn btn-success d-block w-25 mx-auto">Start Game</span>
+<RouterLink to="/mine-game" class={'m-2 btn btn-success rounded d-block w-25 mx-auto'}>
+    Start Game
 </RouterLink>

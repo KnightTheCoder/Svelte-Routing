@@ -4,6 +4,8 @@
 
     export let to = '/';
     export let isNavigation = false;
+    let classes = 'mx-2 p-2 bg-dark rounded';
+    export {classes as class}
 
     const setPath = () => {
         window.location.hash = to.replace(/^\//, '');
@@ -13,7 +15,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <span
-    class="mx-2 p-2 bg-dark rounded"
+    class={`${classes}`}
     class:navigation={isNavigation}
     on:click={setPath}
 >

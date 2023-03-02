@@ -83,6 +83,7 @@
                         continue;
                     
                     adjacentCell.visible = true;
+                    adjacentCell.marked = false;
                 }
             }
         }
@@ -104,7 +105,7 @@
     }
 
     const markCell = (cell) => {
-        if (isGameOver || isGameWon)
+        if (isGameOver || isGameWon || cell.visible)
             return;
 
         cell.marked = !cell.marked;        
@@ -121,18 +122,24 @@
 
     {#if isGameOver}
         <div transition:scale>
-            <h3 class="my-3 text-center text-danger">
+            <h1 class="my-3 text-center text-danger">
                 Game over!
-            </h3>
+            </h1>
     
             <button class="btn btn-success d-block w-25 mx-auto" on:click={generateField}>
                 Play gain
             </button>
         </div>
     {:else if isGameWon}
-        <h3 transition:blur class="my-3 text-center text-success">
-            You win!
-        </h3>
+        <div transition:blur>
+            <h1 class="my-3 text-center text-success">
+                You win!
+            </h1>
+            
+            <button class="btn btn-success d-block w-25 mx-auto" on:click={generateField}>
+                Play gain
+            </button>
+        </div>
     {/if}
     
     <table class="mx-auto my-3">
@@ -144,9 +151,10 @@
                         <td
                             class="text-center"
                             class:visible={col.visible}
-                            class:bg-danger={col.text == 'x' && col.visible}
+                            class:bg-danger={!col.marked && col.text == 'x' && col.visible}
                             class:exploded={col.exploded}
-                            class:bg-warning={col.marked}
+                            class:bg-warning={col.marked && (col.text != 'x' || !col.visible)}
+                            class:bg-success={col.marked && col.text == 'x' && col.visible}
                             on:click={_ => revealCell(col, rowId, colId)}
                             on:contextmenu|preventDefault={_ => markCell(col)}
                         >
