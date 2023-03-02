@@ -1,6 +1,6 @@
 <script>
     /* Provides a navigation link for a given route */
-    import { currentPath } from '../stores/routing';
+    import { currentPath, getRouteFromPath } from '../stores/routing';
 
     export let to = '/';
     export let isNavigation = false;
@@ -11,6 +11,8 @@
         window.location.hash = to.replace(/^\//, '');
         $currentPath = to;
     };
+
+    let defaultName = getRouteFromPath(to).name.charAt(0).toUpperCase() + getRouteFromPath(to).name.slice(1).replace('-', ' ');
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -19,7 +21,9 @@
     class:navigation={isNavigation}
     on:click={setPath}
 >
-    <slot />
+    <slot>
+        {defaultName}
+    </slot>
 </span>
 
 <style>

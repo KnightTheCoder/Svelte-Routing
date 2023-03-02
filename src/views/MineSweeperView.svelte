@@ -2,10 +2,9 @@
     import { onMount } from "svelte";
     import { blur, scale } from "svelte/transition";
     import { fieldSize } from "../stores/mineSweeper";
-    import Mine from '../assets/mine.png';
 
     let field = [];
-    const mineImg = Mine;
+    const src = 'src/assets/mine.png';
     let isGameOver = false;
     $: isGameWon = field.every(row => row.filter(cell => cell.text != 'x').every(cell => cell.visible));
     
@@ -130,7 +129,7 @@
                 Play gain
             </button>
         </div>
-    {:else if isGameWon}
+    {:else if isGameWon && field.length}
         <div transition:blur>
             <h1 class="my-3 text-center text-success">
                 You win!
@@ -161,7 +160,7 @@
                             {#if col.visible}
                                 <span transition:blur={{delay: 0, duration: 300}}>
                                     {#if col.text == 'x'}
-                                        <img class="m-auto" src={mineImg} alt="mine">
+                                        <img class="m-auto" {src} alt="mine">
                                     {:else if col.text}
                                         <p class="text-center m-auto">{col.text}</p>
                                     {/if}
