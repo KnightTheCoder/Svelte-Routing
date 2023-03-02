@@ -1,7 +1,7 @@
 import { currentPath, currentRoute, getRouteFromPath, routes } from '../stores/routing';
 import HomeView from '../views/HomeView.svelte';
 import CounterView from '../views/CounterView.svelte';
-import StopperView from '../views/StopperView.svelte';
+import StopWatchView from '../views/StopWatchView.svelte';
 import CalculatorView from '../views/CalculatorView.svelte';
 import PageNotFoundView from '../views/PageNotFoundView.svelte';
 import MineSweeperStartView from '../views/MineSweeperStartView.svelte';
@@ -20,9 +20,9 @@ export const createRouter = () => {
             component: CounterView
         },
         {
-            path: '/stopper',
-            name: 'stopper',
-            component: StopperView
+            path: '/stopwatch',
+            name: 'stopwatch',
+            component: StopWatchView
         },
         {
             path: '/calculator',

@@ -1,11 +1,13 @@
 <script>
     import { onMount } from "svelte";
+    import { blur, scale } from "svelte/transition";
     import { fieldSize } from "../stores/mineSweeper";
     import Mine from '../assets/mine.png';
 
     let field = [];
     const mineImg = Mine;
     let isGameOver = false;
+    let isGameWon = false;
     
     onMount(() => {
         generateField();
@@ -14,6 +16,7 @@
     const generateField = () => {
         field = [];
         isGameOver = false;
+        isGameWon = false;
 
         for (let row of range(0, $fieldSize)) {
             field.push([])
@@ -21,7 +24,7 @@
                 let cell = { text: null, visible: false };
                 
                 if (Math.round(Math.random() * 9) == 5) {
-                    cell.text = 'x'
+                    cell.text = 'x';
                 }
                 
                 field[row].push(cell);
@@ -86,7 +89,9 @@
         }
 
         if (cell.text == 'x') {
+            cell.exploded = true;
             isGameOver = true;
+
             for (let i of range(0, $fieldSize)) {
                 for (let j of range(0, $fieldSize)) {
                     const mineToShow = field[i][j];
@@ -97,6 +102,15 @@
             }
             field = field;
         }
+
+        if (field.every(row => row.filter(cell => cell.text != 'x').every(cell => cell.visible))) {
+            isGameWon = true;
+        }
+    }
+
+    const markCell = (cell) => {
+        cell.marked = !cell.marked;        
+        field = field;
     }
 
     const range = (start, stop) => Array(stop - start).fill(start).map((x, y) => x + y);
@@ -105,9 +119,8 @@
 <h1 class="text-center">
     Mine Sweeper
 </h1>
-
 {#if isGameOver}
-    <div class="my-3">
+    <div transition:scale class="my-3">
         <h3 class="text-center">
             Game over!
         </h3>
@@ -115,6 +128,10 @@
             Play gain
         </button>
     </div>
+{:else if isGameWon}
+    <h3 transition:blur class="my-3 text-center text-success">
+        You won!
+    </h3>
 {/if}
 
 <table class="mx-auto my-3">
@@ -126,14 +143,20 @@
                     <td
                         class="text-center"
                         class:visible={col.visible}
-                        on:click={() => revealCell(col, rowId, colId)}
+                        class:exploded={col.exploded}
+                        class:bg-danger={col.text == 'x' && col.visible}
+                        class:bg-warning={col.marked}
+                        on:click={_ => revealCell(col, rowId, colId)}
+                        on:contextmenu|preventDefault={_ => markCell(col)}
                     >
                         {#if col.visible}
-                            {#if col.text == 'x'}
-                                <img class="m-auto" src={mineImg} alt="mine">
-                            {:else if col.text}
-                                <p class="text-center m-auto">{col.text}</p>
-                            {/if}
+                            <span transition:blur>
+                                {#if col.text == 'x'}
+                                    <img class="m-auto" src={mineImg} alt="mine">
+                                {:else if col.text}
+                                    <p class="text-center m-auto">{col.text}</p>
+                                {/if}
+                            </span>
                         {/if}
                     </td>
                 {/each}
@@ -158,5 +181,9 @@
 
     .visible {
         background-color: #707070;
+    }
+
+    .exploded {
+        background-color: darkred;
     }
 </style>

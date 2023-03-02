@@ -5,7 +5,7 @@
 <nav class="text-center">
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/counter">Counter</RouterLink>
-    <RouterLink to="/stopper">Stopper</RouterLink>
+    <RouterLink to="/stopwatch">StopWatch</RouterLink>
     <RouterLink to="/calculator">Calculator</RouterLink>
     <RouterLink to="/mine-start">MineSweeper</RouterLink>
 </nav>
