@@ -31,7 +31,7 @@
     Mine Sweeper
 </h1>
 
-<table class="table table-dark my-3">
+<table class="w-25 mx-auto my-3">
     <tbody>
         {#each field as row}
             <tr>
@@ -54,11 +54,11 @@
     }
 
     img {
-        width: 40px;
+        width: 20px;
     }
 
     td {
-        width: 40px;
-        height: 40px;
+        width: 25px;
+        height: 25px;
     }
 </style>

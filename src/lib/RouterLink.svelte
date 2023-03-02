@@ -1,12 +1,12 @@
 <script>
     /* Provides a navigation link for a given route */
-    import { currentRoute, getRouteFromPath } from '../stores/routing';
+    import { currentPath, currentRoute, getRouteFromPath } from '../stores/routing';
 
     export let to = '/';
 
     const setPath = () => {
-        $currentRoute = getRouteFromPath(to);
         window.location.hash = to.replace(/^\//, '');
+        $currentPath = to;
     };
 </script>
 

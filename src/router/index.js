@@ -1,4 +1,4 @@
-import { currentRoute, getRouteFromPath, routes } from '../stores/routing';
+import { currentPath, currentRoute, getRouteFromPath, routes } from '../stores/routing';
 import HomeView from '../views/HomeView.svelte';
 import CounterView from '../views/CounterView.svelte';
 import StopperView from '../views/StopperView.svelte';
@@ -46,12 +46,14 @@ export const createRouter = () => {
         }
     ]);
 
-    let route = getRouteFromPath(window.location.hash.replace(/^\#/, '/'));
-    if (route) {
-        currentRoute.set(getRouteFromPath(route.path));
-    } else if (window.location.hash == '') {
-        currentRoute.set(getRouteFromPath('/'));
-    } else {
-        currentRoute.set(getRouteFromPath('/error'));
-    }
+    currentPath.subscribe(() => {
+        let route = getRouteFromPath(window.location.hash.replace(/^\#/, '/'));
+        if (route) {
+            currentRoute.set(getRouteFromPath(route.path));
+        } else if (window.location.hash == '') {
+            currentRoute.set(getRouteFromPath('/'));
+        } else {
+            currentRoute.set(getRouteFromPath('/error'));
+        }
+    });
 };
