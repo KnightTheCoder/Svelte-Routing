@@ -8,9 +8,6 @@
     
     for (let i = 0; i < $fieldSize; i++) {
         field.push([]);
-        for (let j = 0; j < $fieldSize; j++) {
-            field[i].push(null);
-        }
     }
     
     onMount(() => {
@@ -18,8 +15,9 @@
             for (let j = 0; j < $fieldSize; j++) {
                 if (Math.round(Math.random() * 9) == 5) {
                     field[i][j] = 'x';
+                } else {
+                    field[i][j] = null;
                 }
-                
             }
         }
     })
@@ -33,7 +31,7 @@
     Mine Sweeper
 </h1>
 
-<table class="table">
+<table class="table table-dark my-3">
     <tbody>
         {#each field as row}
             <tr>
