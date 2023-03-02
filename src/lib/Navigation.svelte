@@ -3,11 +3,11 @@
 </script>
 
 <nav class="text-center">
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/counter">Counter</RouterLink>
-    <RouterLink to="/stopwatch">StopWatch</RouterLink>
-    <RouterLink to="/calculator">Calculator</RouterLink>
-    <RouterLink to="/mine-start">MineSweeper</RouterLink>
+    <RouterLink to="/" isNavigation>Home</RouterLink>
+    <RouterLink to="/counter" isNavigation>Counter</RouterLink>
+    <RouterLink to="/stopwatch" isNavigation>Stop watch</RouterLink>
+    <RouterLink to="/calculator" isNavigation>Calculator</RouterLink>
+    <RouterLink to="/mine-start" isNavigation>Mine sweeper</RouterLink>
 </nav>
 
 <style>
