@@ -102,6 +102,7 @@
                     if (adjacentCell.text == 'x')
                         continue;
                     
+                    revealCell(adjacentCell, row+i, col+j);
                     adjacentCell.visible = true;
                     adjacentCell.marked = false;
                 }
@@ -124,13 +125,13 @@
     const range = (start, stop) => Array(stop - start).fill(start).map((x, y) => x + y);
 </script>
 
-<div class:shake={isGameOver} in:scale={{delay: 0, duration: 300}}>
+<div class:shake={isGameOver} in:scale={{delay: 0, duration: 300}} out:scale={{delay: 0, duration: 0}}>
     <h1 class="text-center">
         Mine sweeper
     </h1>
 
     {#if isGameOver}
-        <div transition:scale>
+        <div in:scale>
             <h1 class="my-3 text-center text-danger">
                 Game over!
             </h1>
@@ -140,7 +141,7 @@
             </button>
         </div>
     {:else if isGameWon && field.length}
-        <div transition:blur>
+        <div in:blur>
             <h1 class="my-3 text-center text-success">
                 You win!
             </h1>
