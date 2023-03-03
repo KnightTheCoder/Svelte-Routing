@@ -4,6 +4,9 @@
     import { fieldSize } from "@/stores/mineSweeper";
     import { title } from "@/stores/title";
     import Mine from '@/assets/mine.png';
+    import { createTimer } from "@/lib/functions/timer";
+
+    const { ms, sec, min, startCounter, stopCounter, resetCounter } = createTimer();
 
     let field = [];
     const src = Mine;
@@ -22,6 +25,7 @@
             }
         }
     }
+    $: isGameOver || isGameWon ? stopCounter() : null;
     
     onMount(() => {
         generateField();
@@ -29,6 +33,8 @@
     })
 
     const generateField = () => {
+        resetCounter();
+        startCounter();
         field = [];
 
         for (let row of range(0, $fieldSize)) {
@@ -120,7 +126,7 @@
 
 <div class:shake={isGameOver} in:scale={{delay: 0, duration: 300}}>
     <h1 class="text-center">
-        Mine Sweeper
+        Mine sweeper
     </h1>
 
     {#if isGameOver}
@@ -144,6 +150,10 @@
             </button>
         </div>
     {/if}
+
+    <h3 class="text-center my-3">
+        {$min} : {$sec} : {$ms * 10}
+    </h3>
     
     <table class="mx-auto my-3">
         <tbody>
@@ -152,7 +162,7 @@
                     {#each row as col, colId (colId)}
                         <!-- svelte-ignore a11y-click-events-have-key-events -->
                         <td
-                            class="text-center"
+                            class="text-center disable-interactions"
                             class:visible={col.visible}
                             class:bg-danger={!col.marked && col.text == 'x' && col.visible}
                             class:exploded={col.exploded}
@@ -216,5 +226,10 @@
         80% { transform: translate(-1px, -1px) rotate(1deg); }
         90% { transform: translate(1px, 2px) rotate(0deg); }
         100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+
+    .disable-interactions {
+        cursor: default;
+        user-select: none;
     }
 </style>

@@ -1,5 +1,5 @@
 <script>
-    import CalculatorButton from '@/lib/CalculatorButton.svelte';
+    import CalculatorButton from '@/lib/components/CalculatorButton.svelte';
 
     let displayedCalculation = '';
     let buttons = [
@@ -65,7 +65,8 @@
     Calculator
 </h1>
 
-<table class="w-25 mx-auto">
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<table class="w-25 mx-auto" on:keydown={e => e.key == 'Enter' ? calculate() : null}>
     <tr>
         <td colspan="4">
             <input

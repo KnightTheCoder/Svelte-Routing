@@ -1,5 +1,5 @@
 <script>
-    import RouterLink from "@/lib/RouterLink.svelte";
+    import RouterLink from "@/lib/components/RouterLink.svelte";
     import { fieldSize } from "@/stores/mineSweeper";
 
     let sizes = [10, 15, 20, 25, 30];
