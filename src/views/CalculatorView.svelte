@@ -1,5 +1,5 @@
 <script>
-    import CalculatorButton from '../lib/CalculatorButton.svelte';
+    import CalculatorButton from '@/lib/CalculatorButton.svelte';
 
     let displayedCalculation = '';
     let buttons = [

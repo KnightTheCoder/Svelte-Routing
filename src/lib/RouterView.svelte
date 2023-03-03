@@ -1,5 +1,5 @@
 <script>
-    import { currentRoute } from '../stores/routing';
+    import { currentRoute } from '@/stores/routing';
 </script>
 
 {#if $currentRoute}
