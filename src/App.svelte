@@ -2,18 +2,18 @@
     import RouterView from './lib/RouterView.svelte';
     import Navigation from './lib/Navigation.svelte';
     import { currentRoute } from './stores/routing';
+    import { title } from './stores/title';
 
-    currentRoute.subscribe(() => {
-        if (!$currentRoute)
+    currentRoute.subscribe(value => {
+        if (!value)
             return;
 
-        document.title = $currentRoute.name
+        $title = value.name
             .charAt(0)
             .toUpperCase()
-            + $currentRoute.name
+            + value.name
                 .slice(1)
-                .replace('-', ' ')
-                + ' - Svelte Custom Router';
+                .replace('-', ' ');
     });
 </script>
 

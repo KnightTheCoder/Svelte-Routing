@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import { blur, scale } from "svelte/transition";
     import { fieldSize } from "../stores/mineSweeper";
+    import { title } from "../stores/title";
 
     let field = [];
     const src = 'src/assets/mine.png';
@@ -10,6 +11,7 @@
     
     onMount(() => {
         generateField();
+        $title = 'Mine sweeper';
     })
 
     const generateField = () => {
