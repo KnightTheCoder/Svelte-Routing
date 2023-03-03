@@ -6,8 +6,21 @@
 
     let field = [];
     const src = 'src/assets/mine.png';
-    let isGameOver = false;
+
+    $: isGameOver = field.some(row => row.some(cell => cell.exploded));
     $: isGameWon = field.every(row => row.filter(cell => cell.text != 'x').every(cell => cell.visible));
+    $: {
+        if (field.length && (isGameWon || isGameOver)) {
+            for (let i of range(0, $fieldSize)) {
+                for (let j of range(0, $fieldSize)) {
+                    const mineToShow = field[i][j];
+
+                    if (mineToShow.text == 'x')
+                        mineToShow.visible = true;
+                }
+            }
+        }
+    }
     
     onMount(() => {
         generateField();
@@ -16,7 +29,6 @@
 
     const generateField = () => {
         field = [];
-        isGameOver = false;
 
         for (let row of range(0, $fieldSize)) {
             field.push([])
@@ -91,17 +103,6 @@
 
         if (cell.text == 'x') {
             cell.exploded = true;
-            isGameOver = true;
-
-            for (let i of range(0, $fieldSize)) {
-                for (let j of range(0, $fieldSize)) {
-                    const mineToShow = field[i][j];
-
-                    if (mineToShow.text == 'x')
-                        mineToShow.visible = true;
-                }
-            }
-            field = field;
         }
     }
 
