@@ -4,16 +4,12 @@
     import { currentRoute } from '@/lib/stores/routing';
     import { title } from '@/lib/stores/title';
 
-    currentRoute.subscribe(value => {
-        if (!value)
-            return;
+    currentRoute.subscribe((value) => {
+        if (!value) return;
 
-        $title = value.name
-            .charAt(0)
-            .toUpperCase()
-            + value.name
-                .slice(1)
-                .replace('-', ' ');
+        $title =
+            value.name.charAt(0).toUpperCase() +
+            value.name.slice(1).replace('-', ' ');
     });
 </script>
 

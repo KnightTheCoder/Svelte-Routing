@@ -1,12 +1,18 @@
 <script>
-    import { createTimer } from "@/lib/functions/timer";
+    import { createTimer } from '@/lib/functions/timer';
 
-    let { counterInterval, ms, sec, min, startCounter, stopCounter, resetCounter } = createTimer();
+    let {
+        counterInterval,
+        ms,
+        sec,
+        min,
+        startCounter,
+        stopCounter,
+        resetCounter
+    } = createTimer();
 </script>
 
-<h1 class="text-center">
-    Stop watch
-</h1>
+<h1 class="text-center">Stop watch</h1>
 
 <h1 class="text-center">
     {$min} : {$sec} : {$ms * 10}

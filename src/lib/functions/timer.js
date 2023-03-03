@@ -1,4 +1,4 @@
-import { get, writable } from "svelte/store";
+import { get, writable } from 'svelte/store';
 
 export const createTimer = () => {
     let counterInterval = null;
@@ -10,14 +10,14 @@ export const createTimer = () => {
         if (counterInterval) return;
 
         counterInterval = setInterval(() => {
-            ms.set(get(ms)+1);
+            ms.set(get(ms) + 1);
             if (get(ms) % 100 == 0 && get(ms) > 0) {
                 ms.set(0);
-                sec.set(get(sec)+1);
+                sec.set(get(sec) + 1);
             }
-            if (get(sec) % 60 == 0 &&get(sec) > 0) {
+            if (get(sec) % 60 == 0 && get(sec) > 0) {
                 sec.set(0);
-                min.set(get(min)+1);
+                min.set(get(min) + 1);
             }
         }, 10);
     };
@@ -33,5 +33,13 @@ export const createTimer = () => {
         ms.set(0);
     };
 
-    return { counterInterval, ms, sec, min, startCounter, stopCounter, resetCounter }
-}
+    return {
+        counterInterval,
+        ms,
+        sec,
+        min,
+        startCounter,
+        stopCounter,
+        resetCounter
+    };
+};

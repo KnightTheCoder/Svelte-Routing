@@ -15,14 +15,17 @@
             displayedCalculation.length - 1
         );
 
-        if (['=', 'C'].includes(character) || buttons.every((arr) => arr.every((it) => character != it))) {
+        if (
+            ['=', 'C'].includes(character) ||
+            buttons.every((arr) => arr.every((it) => character != it))
+        ) {
             displayedCalculation = displayedCalculation.slice(
                 0,
                 displayedCalculation.length - 1
             );
         }
 
-        switch(character) {
+        switch (character) {
             case '=':
                 calculate();
                 break;
@@ -61,12 +64,13 @@
     };
 </script>
 
-<h1 class="text-center">
-    Calculator
-</h1>
+<h1 class="text-center">Calculator</h1>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<table class="w-25 mx-auto" on:keydown={e => e.key == 'Enter' ? calculate() : null}>
+<table
+    class="w-25 mx-auto"
+    on:keydown={(e) => (e.key == 'Enter' ? calculate() : null)}
+>
     <tr>
         <td colspan="4">
             <input

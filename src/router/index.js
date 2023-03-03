@@ -1,4 +1,9 @@
-import { currentPath, currentRoute, getRouteFromPath, routes } from '@/lib/stores/routing';
+import {
+    currentPath,
+    currentRoute,
+    getRouteFromPath,
+    routes
+} from '@/lib/stores/routing';
 import HomeView from '@/views/HomeView.svelte';
 import CounterView from '@/views/CounterView.svelte';
 import StopWatchView from '@/views/StopWatchView.svelte';
