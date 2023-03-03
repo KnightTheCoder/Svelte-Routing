@@ -1,6 +1,6 @@
 <script>
     /* Provides a navigation link for a given route */
-    import { currentPath, getRouteFromPath } from '@/stores/routing';
+    import { currentPath, getRouteFromPath } from '@/lib/stores/routing';
 
     export let to = '/';
     export let isNavigation = false;

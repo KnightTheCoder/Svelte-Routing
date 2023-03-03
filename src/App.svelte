@@ -1,8 +1,8 @@
 <script>
     import RouterView from '@/lib/components/RouterView.svelte';
     import Navigation from '@/lib/components/Navigation.svelte';
-    import { currentRoute } from '@/stores/routing';
-    import { title } from '@/stores/title';
+    import { currentRoute } from '@/lib/stores/routing';
+    import { title } from '@/lib/stores/title';
 
     currentRoute.subscribe(value => {
         if (!value)

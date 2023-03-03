@@ -1,11 +1,11 @@
-import { currentPath, currentRoute, getRouteFromPath, routes } from '../stores/routing';
-import HomeView from '../views/HomeView.svelte';
-import CounterView from '../views/CounterView.svelte';
-import StopWatchView from '../views/StopWatchView.svelte';
-import CalculatorView from '../views/CalculatorView.svelte';
-import PageNotFoundView from '../views/PageNotFoundView.svelte';
-import MineSweeperStartView from '../views/MineSweeperStartView.svelte';
-import MineSweeperView from '../views/MineSweeperView.svelte';
+import { currentPath, currentRoute, getRouteFromPath, routes } from '@/lib/stores/routing';
+import HomeView from '@/views/HomeView.svelte';
+import CounterView from '@/views/CounterView.svelte';
+import StopWatchView from '@/views/StopWatchView.svelte';
+import CalculatorView from '@/views/CalculatorView.svelte';
+import PageNotFoundView from '@/views/PageNotFoundView.svelte';
+import MineSweeperStartView from '@/views/MineSweeperStartView.svelte';
+import MineSweeperView from '@/views/MineSweeperView.svelte';
 
 export const createRouter = () => {
     routes.set([

@@ -1,8 +1,8 @@
 <script>
     import { onMount } from "svelte";
     import { blur, scale } from "svelte/transition";
-    import { fieldSize } from "@/stores/mineSweeper";
-    import { title } from "@/stores/title";
+    import { fieldSize } from "@/lib/stores/mineSweeper";
+    import { title } from "@/lib/stores/title";
     import Mine from '@/assets/mine.png';
     import { createTimer } from "@/lib/functions/timer";
 
