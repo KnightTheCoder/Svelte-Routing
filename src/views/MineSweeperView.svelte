@@ -1,11 +1,12 @@
 <script>
     import { onMount } from "svelte";
     import { blur, scale } from "svelte/transition";
-    import { fieldSize } from "../stores/mineSweeper";
-    import { title } from "../stores/title";
+    import { fieldSize } from "@/stores/mineSweeper";
+    import { title } from "@/stores/title";
+    import Mine from '@/assets/mine.png';
 
     let field = [];
-    const src = 'src/assets/mine.png';
+    const src = Mine;
 
     $: isGameOver = field.some(row => row.some(cell => cell.exploded));
     $: isGameWon = field.every(row => row.filter(cell => cell.text != 'x').every(cell => cell.visible));
