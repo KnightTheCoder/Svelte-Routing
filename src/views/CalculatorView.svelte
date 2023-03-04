@@ -10,10 +10,30 @@
         ['0', '.', '=', '+']
     ];
 
+    const handleCharacter = (character) => {
+        if (displayedCalculation.length > 1) {
+            let prevChar = displayedCalculation.charAt(
+                displayedCalculation.length - 2
+            );
+
+            let operators = ['+', '-', '/', '*', '.'];
+
+            if (operators.includes(prevChar) && operators.includes(character)) {
+                displayedCalculation =
+                    displayedCalculation.slice(
+                        0,
+                        displayedCalculation.length - 2
+                    ) + character;
+            }
+        }
+    };
+
     const handleUserInput = () => {
         let character = displayedCalculation.charAt(
             displayedCalculation.length - 1
         );
+
+        handleCharacter(character);
 
         if (
             ['=', 'C'].includes(character) ||
@@ -45,6 +65,7 @@
 
     const click = (event) => {
         displayedCalculation += event.detail.value;
+        handleCharacter(event.detail.value);
     };
 
     const clear = () => {
