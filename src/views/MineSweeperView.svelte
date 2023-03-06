@@ -40,7 +40,7 @@
         field = [];
 
         for (let row of range(0, $fieldSize)) {
-            field.push([]);
+            field = [...field, []];
             for (let col of range(0, $fieldSize)) {
                 let cell = { text: null, visible: false };
 
@@ -48,8 +48,7 @@
                     cell.text = 'x';
                 }
 
-                field[row].push(cell);
-                field = field;
+                field[row] = [...field[row], cell];
             }
         }
 
