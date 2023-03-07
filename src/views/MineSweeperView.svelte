@@ -105,7 +105,6 @@
                     if (adjacentCell.text == 'x') continue;
 
                     revealCell(row + i, col + j);
-                    adjacentCell.visible = true;
                     adjacentCell.marked = false;
                 }
             }
