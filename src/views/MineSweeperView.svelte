@@ -182,8 +182,8 @@
                             class:bg-success={col.marked &&
                                 col.text == 'x' &&
                                 col.visible}
-                            on:click={(_) => revealCell(rowId, colId)}
-                            on:contextmenu|preventDefault={(_) => markCell(col)}
+                            on:click={() => revealCell(rowId, colId)}
+                            on:contextmenu|preventDefault={() => markCell(col)}
                         >
                             {#if col.visible}
                                 <span
