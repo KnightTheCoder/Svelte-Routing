@@ -83,7 +83,9 @@
         field = field;
     };
 
-    const revealCell = (cell, row, col) => {
+    const revealCell = (row, col) => {
+        let cell = field[row][col]
+
         if (isGameOver || isGameWon || cell.marked || cell.visible) return;
 
         cell.visible = true;
@@ -102,7 +104,7 @@
 
                     if (adjacentCell.text == 'x') continue;
 
-                    revealCell(adjacentCell, row + i, col + j);
+                    revealCell(row + i, col + j);
                     adjacentCell.visible = true;
                     adjacentCell.marked = false;
                 }
@@ -180,7 +182,7 @@
                             class:bg-success={col.marked &&
                                 col.text == 'x' &&
                                 col.visible}
-                            on:click={(_) => revealCell(col, rowId, colId)}
+                            on:click={(_) => revealCell(rowId, colId)}
                             on:contextmenu|preventDefault={(_) => markCell(col)}
                         >
                             {#if col.visible}
